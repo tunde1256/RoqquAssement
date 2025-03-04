@@ -1,0 +1,252 @@
+{
+    "info": {
+      "_postman_id": "abcd-1234-efgh-5678-ijkl",
+      "name": "User, Post, and Address Management API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "User Operations",
+        "item": [
+          {
+            "name": "Get All Users",
+            "request": {
+              "method": "GET",
+              "url": {
+                "raw": "http://localhost:4090/users",
+                "host": ["localhost"],
+                "port": "4090",
+                "path": ["users"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get User Count",
+            "request": {
+              "method": "GET",
+              "url": {
+                "raw": "http://localhost:4090/users/count",
+                "host": ["localhost"],
+                "port": "4090",
+                "path": ["users", "count"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get User by ID",
+            "request": {
+              "method": "GET",
+              "url": {
+                "raw": "http://localhost:4090/users/:id",
+                "host": ["localhost"],
+                "port": "4090",
+                "path": ["users", ":id"],
+                "variable": [
+                  {
+                    "key": "id",
+                    "value": "1"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Create User",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\"name\": \"John Doe\", \"email\": \"johndoe@example.com\"}"
+              },
+              "url": {
+                "raw": "http://localhost:4090/users",
+                "host": ["localhost"],
+                "port": "4090",
+                "path": ["users"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Post Operations",
+        "item": [
+          {
+            "name": "Get All Posts by User ID",
+            "request": {
+              "method": "GET",
+              "url": {
+                "raw": "http://localhost:4090/posts?user_id=:user_id",
+                "host": ["localhost"],
+                "port": "4090",
+                "path": ["posts"],
+                "query": [
+                  {
+                    "key": "user_id",
+                    "value": "1"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get Paginated Posts by User ID",
+            "request": {
+              "method": "GET",
+              "url": {
+                "raw": "http://localhost:4090/posts/posts/paginated?user_id=:user_id&page=:page&limit=:limit",
+                "host": ["localhost"],
+                "port": "4090",
+                "path": ["posts", "posts", "paginated"],
+                "query": [
+                  {
+                    "key": "user_id",
+                    "value": "1"
+                  },
+                  {
+                    "key": "page",
+                    "value": "1"
+                  },
+                  {
+                    "key": "limit",
+                    "value": "10"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Create Post",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\"title\": \"Post Title\", \"content\": \"Post Content\", \"user_id\": 1}"
+              },
+              "url": {
+                "raw": "http://localhost:4090/posts/posts",
+                "host": ["localhost"],
+                "port": "4090",
+                "path": ["posts", "posts"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Delete Post by ID",
+            "request": {
+              "method": "DELETE",
+              "url": {
+                "raw": "http://localhost:4090/posts/:id",
+                "host": ["localhost"],
+                "port": "4090",
+                "path": ["posts", ":id"],
+                "variable": [
+                  {
+                    "key": "id",
+                    "value": "1"
+                  }
+                ]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Address Operations",
+        "item": [
+          {
+            "name": "Get Address by User ID",
+            "request": {
+              "method": "GET",
+              "url": {
+                "raw": "http://localhost:4090/addresses/address/:user_id",
+                "host": ["localhost"],
+                "port": "4090",
+                "path": ["addresses", "address", ":user_id"],
+                "variable": [
+                  {
+                    "key": "user_id",
+                    "value": "1"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Create Address",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\"user_id\": 1, \"street\": \"Street Name\", \"city\": \"City Name\", \"state\": \"State Name\", \"zip_Code\": \"12345\"}"
+              },
+              "url": {
+                "raw": "http://localhost:4090/addresses",
+                "host": ["localhost"],
+                "port": "4090",
+                "path": ["addresses"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Update Address by User ID",
+            "request": {
+              "method": "PATCH",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\"street\": \"Updated Street\", \"city\": \"Updated City\", \"state\": \"Updated State\", \"zip_Code\": \"54321\"}"
+              },
+              "url": {
+                "raw": "http://localhost:4090/addresses/:user_id",
+                "host": ["localhost"],
+                "port": "4090",
+                "path": ["addresses", ":user_id"],
+                "variable": [
+                  {
+                    "key": "user_id",
+                    "value": "1"
+                  }
+                ]
+              }
+            },
+            "response": []
+          }
+        ]
+      }
+    ]
+  }
+  
