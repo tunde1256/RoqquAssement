@@ -4,7 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon dist/server.js",
+     
+  "build": "tsc",  
+  "start": "node dist/server.js" ,
+
      "test": "jest"
   },
   "keywords": [],
